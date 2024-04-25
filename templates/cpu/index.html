@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Главная страница{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Последние обновления на сайте</h1>
+        <div class="container my-5">
+            <div class="d-flex flex-row">
+                <div class="col-4">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Макс. значение, %
+                            <span class="badge bg-primary rounded-pill" id="max_value">14</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Мин. значение, %
+                            <span class="badge bg-primary rounded-pill" id="min_value">2</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Среднее значение, %
+                            <span class="badge bg-primary rounded-pill" id="avg_value">1</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-8  ms-2">
+                    <div class="container border border-1">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">CPU, %</th>
+                                <th scope="col">Date <span><i class="bi bi-arrow-up"></i></span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for data in data %}
+                                <tr>
+                                    <th scope="row">{{ data.id }}</th>
+                                    <td>{{ data.data }}</td>
+                                    <td>{{ data.date }}</td>
+                                </tr>
+                            {% empty %}
+                                <p>
+                                    К сожалению нет ни одноой записи
+                                </p>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

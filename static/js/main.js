@@ -18,6 +18,7 @@ $(document).ready(function () {
             url: 'http://localhost:8000/api/cpu/',
             method: 'GET',
             success: (response) => {
+                console.log('response --> ', response)
                 setTableValues(response);
             },
             error: function (xhr, status, error) {
@@ -29,6 +30,7 @@ $(document).ready(function () {
     fetchData();
     setInterval(fetchData, 10000);
 
+    
 
 
 });

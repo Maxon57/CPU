@@ -1,26 +1,34 @@
 $(document).ready(function () {
-    $.ajax({
-        url: '/api/data/',
-        method: 'GET',
-        success: function (response) {
-            // Update the DOM with received data
-            $('#max_value').text(response.max_value);
-            $('#min_value').text(response.min_value);
-            $('#avg_value').text(response.avg_value);
+     function setTableValues(data) {
+        $(".table_body").empty();
 
-            // Dynamically generate table rows for data
-            response.data.forEach(function (data) {
-                $('#data_table_body').append(`
-                        <tr>
-                            <th scope="row">${data.id}</th>
-                            <td>${data.cpu}</td>
-                            <td>${data.date}</td>
-                        </tr>
-                    `);
-            });
-        },
-        error: function (xhr, status, error) {
-            console.error('Error fetching data:', error);
-        }
-    });
+        jQuery.each(data, (index, value) => {
+            $(".table_body").append(`
+            <tr>
+                <th scope="row">${value.id}</th>
+                <td>${value.data}</td>
+                <td>${value.date}</td>
+            </tr>
+        `);
+        });
+    }
+
+    function fetchData() {
+        $.ajax({
+            url: 'http://localhost:8000/api/cpu/',
+            method: 'GET',
+            success: (response) => {
+                setTableValues(response);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching data:', error);
+            }
+        });
+    }
+
+    fetchData();
+    setInterval(fetchData, 10000);
+
+
+
 });

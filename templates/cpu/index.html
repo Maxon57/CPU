@@ -31,18 +31,7 @@
                                 <th scope="col">Date <span><i class="bi bi-arrow-up"></i></span></th>
                             </tr>
                             </thead>
-                            <tbody>
-                            {% for data in data %}
-                                <tr>
-                                    <th scope="row">{{ data.id }}</th>
-                                    <td>{{ data.data }}</td>
-                                    <td>{{ data.date }}</td>
-                                </tr>
-                            {% empty %}
-                                <p>
-                                    К сожалению нет ни одноой записи
-                                </p>
-                            {% endfor %}
+                            <tbody class="table_body">
                             </tbody>
                         </table>
                     </div>

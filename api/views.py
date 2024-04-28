@@ -7,5 +7,5 @@ from cpu_utilization.models import CpuInfo
 class CPUView(mixins.CreateModelMixin,
               mixins.ListModelMixin,
               viewsets.GenericViewSet):
-    queryset = CpuInfo.objects.all()[:100]
+    queryset = CpuInfo.objects.all()
     serializer_class = CPUSerializer

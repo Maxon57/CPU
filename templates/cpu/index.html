@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends '../base.html' %}
 {% block title %}Главная страница{% endblock %}
 {% block content %}
     <div class="container">
@@ -7,17 +7,31 @@
             <div class="d-flex flex-row">
                 <div class="col-4">
                     <ul class="list-group">
+                        <li class="list-group-item list-group-item-primary">Информация о всех записях</li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Макс. значение, %
-                            <span class="badge bg-primary rounded-pill" id="max_value">14</span>
+                            <span class="badge bg-primary rounded-pill" id="max_value_all"></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Мин. значение, %
-                            <span class="badge bg-primary rounded-pill" id="min_value">2</span>
+                            <span class="badge bg-primary rounded-pill" id="min_value_all"></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Среднее значение, %
-                            <span class="badge bg-primary rounded-pill" id="avg_value">1</span>
+                            <span class="badge bg-primary rounded-pill" id="avg_value_all"></span>
+                        </li>
+                        <li class="list-group-item list-group-item-primary">Информация 100 последних записей</li>
+                         <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Макс. значение, %
+                            <span class="badge bg-primary rounded-pill" id="max_value"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Мин. значение, %
+                            <span class="badge bg-primary rounded-pill" id="min_value"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Среднее значение, %
+                            <span class="badge bg-primary rounded-pill" id="avg_value"></span>
                         </li>
                     </ul>
                 </div>
@@ -27,8 +41,16 @@
                             <thead>
                             <tr>
                                 <th scope="col">№</th>
-                                <th scope="col">CPU, %</th>
-                                <th scope="col">Date <span><i class="bi bi-arrow-up"></i></span></th>
+                                <th scope="col" class="order_cpu">CPU, %
+                                    <span>
+                                        <i class="bi bi-arrow-up" id="order_cpu_icon"></i>
+                                    </span>
+                                </th>
+                                <th scope="col" class="order_date">Date
+                                    <span>
+                                        <i class="bi bi-arrow-up" id="order_date_icon"></i>
+                                    </span>
+                                </th>
                             </tr>
                             </thead>
                             <tbody class="table_body">

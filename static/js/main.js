@@ -23,7 +23,7 @@ $(document).ready(function () {
             ? valuesCPU.reduce((total, number) => total + number, 0) / data.length
             : undefined;
 
-        let last100Values = valuesCPU.slice(0, 100);
+        let last100Values = valuesCPU.slice(-100);
 
         let avgValueForLast100 = last100Values.length > 0
             ? last100Values.reduce((total, number) => total + number, 0) / last100Values.length
@@ -93,7 +93,7 @@ $(document).ready(function () {
             method: 'GET',
             success: (response) => {
                 data = response;
-                dataLast100 = response.slice(0, 100);
+                dataLast100 = response.slice(-100);
 
                 dataUpdated();
             },
